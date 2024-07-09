@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    
+  
+    <h2>
+        Registration Forms
+    </h2>
+    {{registrationForm.value| json}}
+    <form [formGroup]="registrationForm">
+        <div class="form-group">
+            <label>userName</label>
+            <input [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched">
+            <!-- <input [class.is-invalid]="userName?.invalid && userName?.touched" formControlName="userName"   type="text" class="form-control">
+            <div *ngIf="userName?.invalid &&userName?.touched">
+                <small *ngIf="userName.errors?.required" class="text-danger">userName is required</small>
+
+            </div> -->
+            <small [class.d-none]="registrationForm.get('userName')?.valid || registrationForm.get('userName')?.untouched"> user is required
+
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input 
+            formControlName="password" type="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Cofirm Password</label>
+            <input   formControlName="confirmPassword"  type="password" class="form-control">
+        </div>
+
+        <div formGroupName ="address">
+            <div class="form-group">
+                <label>City</label>
+                <input formControlName="city" type="text" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input formControlName="state" type="text" class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label>Postal Code</label>
+                <input formControlName="postalCode" type="text" class="form-control">
+
+            </div>
+
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+        <button      class="btn btn-secondary ml-2" type="submit">load date</button>
+    </form>
+
+</div>
